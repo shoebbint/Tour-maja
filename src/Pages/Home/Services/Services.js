@@ -1,8 +1,15 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import UseServices from '../../../Hooks/UseServices';
 
 const Services = () => {
+    const navigate=useNavigate()
+    const navigateToServiceDetail=(id,name,about,price)=>{
+navigate(`/service/${id}/${name}/${about}/${price}`);
+
+
+    }
     const [services, setServices] = UseServices();
     return (
 
@@ -13,20 +20,19 @@ const Services = () => {
                 {
                     services.map(service =>
                     (
-                        <Card
+                        <Card service={service}
                             bg={service.variant.toLowerCase()}
                             key={service.variant}
                             text={service.variant.toLowerCase() === 'light' ? 'dark' : 'white'}
                             className="mb-2"
                         >
-                            <Card.Header>Header</Card.Header>
+                            <Card.Header>      {service.balance}</Card.Header>
                             <Card.Body>
-                                <Card.Title>{service.variant} Card Title </Card.Title>
+                                <Card.Title> {service.name}</Card.Title>
                                 <Card.Text>
-                                    Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.
+                                {service.about}
                                 </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+                                <Button onClick={()=>navigateToServiceDetail(service.id,service.name,service.about,service.balance)} variant="primary">Go somewhere</Button>
                             </Card.Body>
                         </Card>
                     ))}
