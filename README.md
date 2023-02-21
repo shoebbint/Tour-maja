@@ -1,10 +1,21 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a Tour service provider site named "Tour maja" [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## List of features
 
-In the project directory, you can run:
+1.This project have a secure authentication system
+2.user can get many services
+3.They can checkout their services
+4. They can login using facebook also
+5.user will have nice experience due to responsiveness
+## List of Technologies
+
+1.React Bootstrap is used
+2.React-Toastify is used
+3.React-firebase-hooks are used
+4. Authentication done with Firebase
+5.various React libraries are used
 
 ### `npm start`
 
