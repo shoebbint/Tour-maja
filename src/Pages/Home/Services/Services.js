@@ -13,18 +13,18 @@ navigate(`/service/${id}/${name}/${about}/${price}`);
     const [services, setServices] = UseServices();
     return (
 
-        <div>
+        <div className='my-5 '>
 
             <h1>Our Services</h1>
-            <div className="d-flex container">
+            <div className=" row row-cols-md-4 row-cols-1 row-cols-sm-2 mx-auto  container">
                 {
                     services.map(service =>
                     (
-                        <Card service={service}
+                        <Card  service={service}
                             bg={service.variant.toLowerCase()}
                             key={service.variant}
                             text={service.variant.toLowerCase() === 'light' ? 'dark' : 'white'}
-                            className="mb-2"
+                            className="mb-2 col"
                         >
                             <Card.Header>      {service.balance}</Card.Header>
                             <Card.Body>
