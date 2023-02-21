@@ -7,7 +7,7 @@ const PopularDestination = () => {
     const sliceplaces = places.slice(1, 4);
     console.log("dffa", sliceplaces);
     return (
-        <div className='container my-5'>
+        <div id='popular' className='container my-5'>
             <div class="my-5">
                 <div class="row">
                     <div class="col-md-12">

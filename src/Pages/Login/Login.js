@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate, } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import img from '../../images/3504.png_860-removebg-preview.png'
 const Login = () => {
@@ -18,7 +19,7 @@ const Login = () => {
     error,
   ] = useSignInWithEmailAndPassword(auth);
   // const [user1, loading1, error1] = useAuthState(auth);
-
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
   const navigateRegister = (event) => {
     navigate('/register');
@@ -30,8 +31,27 @@ const Login = () => {
     const password = passwordRef.current.value;
     signInWithEmailAndPassword(email, password);
   }
+//toast passwordreset mail
+const resetPassword = async() => {
+  const email = emailRef.current.value;
+  await sendPasswordResetEmail(email);
+if(email){
+  toast('Sent email');
+}
+else{
+  toast('Please enter email address');
+}
+
+}
+
   if(user){
     navigate(from, { replace: true });
+  }
+  let errorElement;
+  if (error) {
+    errorElement = <p className='text-danger'>Error: {error?.message}</p>
+
+
   }
     return (
         <div className='my-5  row '>
@@ -61,8 +81,11 @@ const Login = () => {
                         </Button>
                     </div>
     </Form>
-    <p className='ps-5'>New to genius car? <Link to="/register" className='text-primary decoration-none' onClick={navigateRegister}>Please Register</Link></p>
-      {/* <p>Forget Password? <button className="btn btn-link text-primary decoration-none" to="/register" onClick={resetPassword}>Reset Password</button ></p> */}
+    {errorElement}
+
+  <p className='text-center'>Forget Password? <button className="btn btn-link text-primary decoration-none" to="/register" onClick={resetPassword}>Reset Password</button ></p>
+  <p className='text-center'>New to Tour maja? <Link to="/register" className='text-primary decoration-none' onClick={navigateRegister}>Please Register</Link></p>
+
 </div>
         </div>
     );

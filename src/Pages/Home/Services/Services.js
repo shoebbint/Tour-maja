@@ -13,7 +13,7 @@ navigate(`/service/${id}/${name}/${about}/${price}`);
     const [services, setServices] = UseServices();
     return (
 
-        <div className='my-5 '>
+        <div id='services' className='my-5 '>
 
             <h1>Our Services</h1>
             <div className=" row row-cols-md-4 row-cols-1 row-cols-sm-2 mx-auto  container">

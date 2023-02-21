@@ -22,7 +22,7 @@ const Register = () => {
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth,{ sendEmailVerification: true });
     const regEmailRef = useRef('');
     const regPasswordRef = useRef('');
     const nameRef = useRef('');
