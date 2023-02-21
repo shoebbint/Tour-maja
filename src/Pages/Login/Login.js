@@ -1,11 +1,12 @@
 import React, { useRef } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form  } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate, } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../firebase.init';
 import img from '../../images/3504.png_860-removebg-preview.png'
+import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
   let location = useLocation();
   const navigate = useNavigate();
@@ -41,7 +42,6 @@ if(email){
 else{
   toast('Please enter email address');
 }
-
 }
 
   if(user){
@@ -85,7 +85,7 @@ else{
 
   <p className='text-center'>Forget Password? <button className="btn btn-link text-primary decoration-none" to="/register" onClick={resetPassword}>Reset Password</button ></p>
   <p className='text-center'>New to Tour maja? <Link to="/register" className='text-primary decoration-none' onClick={navigateRegister}>Please Register</Link></p>
-
+  <ToastContainer />
 </div>
         </div>
     );

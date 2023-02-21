@@ -32,7 +32,7 @@ navigate(`/service/${id}/${name}/${about}/${price}`);
                                 <Card.Text>
                                 {service.about}
                                 </Card.Text>
-                                <Button onClick={()=>navigateToServiceDetail(service.id,service.name,service.about,service.balance)} variant="primary">Go somewhere</Button>
+                                <Button onClick={()=>navigateToServiceDetail(service.id,service.name,service.about,service.balance)} variant="primary">Get service</Button>
                             </Card.Body>
                         </Card>
                     ))}
